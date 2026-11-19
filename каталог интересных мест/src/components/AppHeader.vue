@@ -35,7 +35,12 @@ function handleExploreClick() {
 <template>
   <header class="site-header">
     <div class="container site-header__inner">
-      <RouterLink to="/" class="brand" aria-label="Travel Places Home" @click="handleExploreClick">
+      <RouterLink
+        to="/"
+        class="brand"
+        aria-label="Места мира — на главную"
+        @click="handleExploreClick"
+      >
         <span class="brand__mark" aria-hidden="true">
           <svg viewBox="0 0 28 28" width="26" height="26" fill="none">
             <circle cx="14" cy="14" r="12.5" stroke="currentColor" stroke-width="1.25" />
@@ -44,19 +49,19 @@ function handleExploreClick() {
           </svg>
         </span>
         <span class="brand__text">
-          <span class="brand__title">Travel Places</span>
-          <span class="brand__subtitle">World Journal</span>
+          <span class="brand__title">Места мира</span>
+          <span class="brand__subtitle">Журнал о путешествиях</span>
         </span>
       </RouterLink>
 
-      <nav class="site-nav" aria-label="Main navigation">
+      <nav class="site-nav" aria-label="Основная навигация">
         <RouterLink
           to="/"
           class="nav-link"
           :class="{ 'is-active': route.name === 'home' && !isShowingFavorites }"
           @click="handleExploreClick"
         >
-          Destinations
+          Направления
         </RouterLink>
 
         <button
@@ -64,7 +69,7 @@ function handleExploreClick() {
           class="favorites-pill"
           :class="{ 'is-active': isShowingFavorites }"
           :aria-pressed="isShowingFavorites"
-          aria-label="Toggle saved destinations"
+          aria-label="Показать избранные направления"
           @click="handleFavoritesClick"
         >
           <svg
@@ -83,7 +88,7 @@ function handleExploreClick() {
               d="M12 20.4c-.3 0-.6-.1-.8-.3C6.1 15.8 3 12.9 3 9.2 3 6.3 5.2 4 8 4c1.6 0 3.1.8 4 2.1C12.9 4.8 14.4 4 16 4c2.8 0 5 2.3 5 5.2 0 3.7-3.1 6.6-8.2 10.9-.2.2-.5.3-.8.3Z"
             />
           </svg>
-          <span>Saved</span>
+          <span>Избранное</span>
           <span class="favorites-pill__count">{{ favoritesCount }}</span>
         </button>
       </nav>
@@ -148,12 +153,12 @@ function handleExploreClick() {
 }
 
 .brand__subtitle {
-  font-size: 0.65rem;
+  font-size: 0.63rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-ink-muted);
-  margin-top: 0.15rem;
+  margin-top: 0.16rem;
 }
 
 .site-nav {

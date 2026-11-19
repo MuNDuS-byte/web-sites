@@ -22,7 +22,7 @@ function goToFavorites() {
 <template>
   <header class="navbar">
     <div class="container navbar-inner">
-      <RouterLink :to="{ name: 'catalog' }" class="brand" aria-label="Movie Explorer Home">
+      <RouterLink :to="{ name: 'catalog' }" class="brand" aria-label="КиноГид — На главную">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1.5" y="1.5" width="33" height="33" rx="9.5" stroke="url(#brandRing)" stroke-width="2" />
@@ -40,17 +40,17 @@ function goToFavorites() {
           </svg>
         </span>
         <span class="brand-text">
-          Movie<span class="brand-accent">Explorer</span>
+          Кино<span class="brand-accent">Гид</span>
         </span>
       </RouterLink>
 
-      <nav class="nav-actions" aria-label="Primary navigation">
+      <nav class="nav-actions" aria-label="Основная навигация">
         <RouterLink
           :to="{ name: 'catalog' }"
           class="nav-link"
           :class="{ 'is-active': isCatalogActive }"
         >
-          Catalog
+          Каталог
         </RouterLink>
 
         <button
@@ -65,7 +65,7 @@ function goToFavorites() {
               d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
             />
           </svg>
-          <span class="favorites-label">Favorites</span>
+          <span class="favorites-label">Избранное</span>
           <span class="favorites-badge">{{ favoritesCount }}</span>
         </button>
       </nav>

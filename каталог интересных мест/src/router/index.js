@@ -11,7 +11,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      meta: { title: 'Travel Places — Curated World Destinations' },
+      meta: { title: 'Места мира — Избранные направления для путешествий' },
     },
     {
       path: '/place/:id',
@@ -23,7 +23,7 @@ const router = createRouter({
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: NotFoundView,
-      meta: { title: 'Page Not Found — Travel Places' },
+      meta: { title: 'Страница не найдена — Места мира' },
     },
   ],
   scrollBehavior(to, from, savedPosition) {
@@ -38,8 +38,8 @@ router.afterEach((to) => {
   if (to.name === 'place-detail') {
     const place = getDestinationById(String(to.params.id || ''))
     document.title = place
-      ? `${place.name}, ${place.country} — Travel Places`
-      : 'Destination Not Found — Travel Places'
+      ? `${place.name}, ${place.country} — Места мира`
+      : 'Направление не найдено — Места мира'
   } else if (to.meta?.title) {
     document.title = to.meta.title
   }

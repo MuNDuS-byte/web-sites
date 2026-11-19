@@ -41,8 +41,8 @@ function handleToggleFavorite() {
           :aria-pressed="favorited"
           :aria-label="
             favorited
-              ? `Remove ${place.name} from favorites`
-              : `Add ${place.name} to favorites`
+              ? `Убрать «${place.name}» из избранного`
+              : `Добавить «${place.name}» в избранное`
           "
           @click.prevent.stop="handleToggleFavorite"
         >
@@ -77,7 +77,7 @@ function handleToggleFavorite() {
 
         <div class="destination-card__footer">
           <span class="destination-card__cta">
-            Read guide
+            Читать гид
             <svg
               class="destination-card__arrow"
               viewBox="0 0 20 20"
@@ -196,7 +196,7 @@ function handleToggleFavorite() {
   gap: 0.35rem;
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-ink-muted);
 }
@@ -242,7 +242,7 @@ function handleToggleFavorite() {
   gap: 0.4rem;
   font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   color: var(--color-ink);
 }
 

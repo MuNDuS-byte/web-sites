@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 
-const footerCategories = ['Nature', 'Cities', 'Beaches', 'Mountains']
+const footerCategories = ['Природа', 'Города', 'Пляжи', 'Горы']
 const currentYear = new Date().getFullYear()
 </script>
 
@@ -9,14 +9,14 @@ const currentYear = new Date().getFullYear()
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="site-footer__brand">
-        <RouterLink to="/" class="site-footer__title">Travel Places</RouterLink>
+        <RouterLink to="/" class="site-footer__title">Места мира</RouterLink>
         <p class="site-footer__tagline">
-          An editorial atlas of remarkable landscapes, timeless cities, and quiet coastlines across the globe.
+          Редакционный атлас удивительных ландшафтов, древних городов и тихих побережий со всего света.
         </p>
       </div>
 
       <div class="site-footer__links">
-        <span class="site-footer__label">Explore by Landscape</span>
+        <span class="site-footer__label">Категории маршрутов</span>
         <ul class="site-footer__list">
           <li v-for="category in footerCategories" :key="category">
             <RouterLink
@@ -31,8 +31,8 @@ const currentYear = new Date().getFullYear()
     </div>
 
     <div class="container site-footer__bottom">
-      <span>© {{ currentYear }} Travel Places Journal</span>
-      <span>Curated for unhurried discovery</span>
+      <span>© {{ currentYear }} Журнал «Места мира»</span>
+      <span>Собрано для неспешных открытий</span>
     </div>
   </footer>
 </template>
@@ -76,7 +76,7 @@ const currentYear = new Date().getFullYear()
   display: block;
   font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-ink-muted);
   margin-bottom: 0.85rem;

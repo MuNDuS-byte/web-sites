@@ -10,19 +10,19 @@ const router = createRouter({
       path: '/',
       name: 'catalog',
       component: CatalogView,
-      meta: { title: 'Movie Explorer — Curated Film Catalog' }
+      meta: { title: 'КиноГид — Каталог избранных фильмов' }
     },
     {
       path: '/movie/:id',
       name: 'movie-details',
       component: MovieDetailsView,
-      meta: { title: 'Movie Explorer' }
+      meta: { title: 'КиноГид' }
     },
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: NotFoundView,
-      meta: { title: 'Page Not Found — Movie Explorer' }
+      meta: { title: 'Страница не найдена — КиноГид' }
     }
   ],
   scrollBehavior(_to, _from, savedPosition) {

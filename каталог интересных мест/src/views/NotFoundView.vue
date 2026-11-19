@@ -4,8 +4,8 @@ import NotFoundState from '@/components/NotFoundState.vue'
 
 <template>
   <NotFoundState
-    eyebrow="404 — Off the Map"
-    title="This page has wandered off the trail"
-    message="The route you requested doesn’t exist. Return to the main catalog to explore destinations around the world."
+    eyebrow="404 — Вне карты"
+    title="Эта страница затерялась в пути"
+    message="Запрошенный адрес не существует. Вернитесь в главный каталог, чтобы исследовать удивительные места мира."
   />
 </template>

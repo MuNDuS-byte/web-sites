@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { MOVIES, GENRES } from '@/data/movies'
+import { MOVIES, GENRES, ALL_GENRE } from '@/data/movies'
 import { useFavorites } from '@/composables/useFavorites'
 import SearchAndFilter from '@/components/SearchAndFilter.vue'
 import MovieCard from '@/components/MovieCard.vue'
@@ -12,7 +12,7 @@ const router = useRouter()
 const { isFavorite, favoritesCount } = useFavorites()
 
 const searchQuery = ref('')
-const selectedGenre = ref('All')
+const selectedGenre = ref(ALL_GENRE)
 const onlyFavorites = ref(route.query.favorites === '1')
 
 watch(
@@ -40,7 +40,7 @@ const filteredMovies = computed(() => {
     if (onlyFavorites.value && !isFavorite(movie.id)) {
       return false
     }
-    if (selectedGenre.value !== 'All' && movie.genre !== selectedGenre.value) {
+    if (selectedGenre.value !== ALL_GENRE && movie.genre !== selectedGenre.value) {
       return false
     }
     if (query && !movie.title.toLowerCase().includes(query)) {
@@ -53,24 +53,24 @@ const filteredMovies = computed(() => {
 const emptyStateContent = computed(() => {
   if (onlyFavorites.value && favoritesCount.value === 0) {
     return {
-      title: 'No favorites saved yet',
+      title: 'В избранном пока пусто',
       description:
-        'Tap the heart icon on any movie card or details page to build your personal watchlist.',
-      actionLabel: 'Browse All Movies'
+        'Нажмите на значок сердца на карточке или странице фильма, чтобы собрать собственную подборку.',
+      actionLabel: 'Смотреть все фильмы'
     }
   }
 
   return {
-    title: 'No matching movies found',
+    title: 'Фильмы не найдены',
     description:
-      'Try adjusting your search query or clearing your active genre and favorites filters.',
-    actionLabel: 'Reset Filters'
+      'Попробуйте изменить поисковый запрос или сбросить активные фильтры по жанру и избранному.',
+    actionLabel: 'Сбросить фильтры'
   }
 })
 
 function resetFilters() {
   searchQuery.value = ''
-  selectedGenre.value = 'All'
+  selectedGenre.value = ALL_GENRE
   if (onlyFavorites.value) {
     handleFavoritesToggle(false)
   }
@@ -80,10 +80,10 @@ function resetFilters() {
 <template>
   <div class="catalog-page container">
     <header class="catalog-hero">
-      <p class="eyebrow">Curated Cinema</p>
-      <h1 class="hero-title">Discover films worth staying up for.</h1>
+      <p class="eyebrow">Избранная коллекция</p>
+      <h1 class="hero-title">Откройте кино, ради которого стоит не спать.</h1>
       <p class="hero-subtitle">
-        Explore handpicked stories across sci-fi, thriller, drama, mystery, fantasy, and animation.
+        Тщательно подобранные истории в жанрах фантастики, триллера, драмы, детектива, фэнтези и анимации.
       </p>
     </header>
 
@@ -98,7 +98,7 @@ function resetFilters() {
       @reset="resetFilters"
     />
 
-    <section class="catalog-content" aria-label="Movie catalog">
+    <section class="catalog-content" aria-label="Каталог фильмов">
       <div v-if="filteredMovies.length > 0" class="movie-grid">
         <MovieCard
           v-for="movie in filteredMovies"

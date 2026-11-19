@@ -1,5 +1,8 @@
 <script setup>
-defineProps({
+import { computed } from 'vue'
+import { ALL_GENRE } from '@/data/movies'
+
+const props = defineProps({
   searchQuery: {
     type: String,
     required: true
@@ -32,10 +35,23 @@ const emit = defineEmits([
   'update:onlyFavorites',
   'reset'
 ])
+
+function pluralizeGenitiveFilms(count) {
+  const mod100 = count % 100
+  const mod10 = count % 10
+  if (mod100 >= 11 && mod100 <= 19) return 'фильмов'
+  if (mod10 === 1) return 'фильма'
+  return 'фильмов'
+}
+
+const totalLabel = computed(() => pluralizeGenitiveFilms(props.totalCount))
+const hasActiveFilters = computed(
+  () => Boolean(props.searchQuery) || props.selectedGenre !== ALL_GENRE || props.onlyFavorites
+)
 </script>
 
 <template>
-  <section class="filter-bar" aria-label="Filter movies">
+  <section class="filter-bar" aria-label="Фильтрация фильмов">
     <div class="search-row">
       <div class="search-field">
         <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -47,8 +63,8 @@ const emit = defineEmits([
           type="search"
           class="search-input"
           :value="searchQuery"
-          placeholder="Search movies by title..."
-          aria-label="Search movies by title"
+          placeholder="Поиск фильмов по названию..."
+          aria-label="Поиск фильмов по названию"
           @input="emit('update:searchQuery', $event.target.value)"
         />
 
@@ -56,7 +72,7 @@ const emit = defineEmits([
           v-if="searchQuery"
           type="button"
           class="clear-btn"
-          aria-label="Clear search"
+          aria-label="Очистить поиск"
           @click="emit('update:searchQuery', '')"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -67,21 +83,21 @@ const emit = defineEmits([
 
       <div class="meta-controls">
         <span class="result-counter" aria-live="polite">
-          <strong>{{ resultCount }}</strong> of {{ totalCount }} {{ totalCount === 1 ? 'film' : 'films' }}
+          Показано <strong>{{ resultCount }}</strong> из {{ totalCount }} {{ totalLabel }}
         </span>
 
         <button
-          v-if="searchQuery || selectedGenre !== 'All' || onlyFavorites"
+          v-if="hasActiveFilters"
           type="button"
           class="reset-link"
           @click="emit('reset')"
         >
-          Reset
+          Сбросить
         </button>
       </div>
     </div>
 
-    <div class="genre-row" role="tablist" aria-label="Filter by genre">
+    <div class="genre-row" role="tablist" aria-label="Фильтр по жанрам">
       <button
         v-for="genre in genres"
         :key="genre"
@@ -107,7 +123,7 @@ const emit = defineEmits([
             d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
           />
         </svg>
-        Favorites
+        Избранное
       </button>
     </div>
   </section>

@@ -22,7 +22,7 @@ const props = defineProps({
   },
   category: {
     type: String,
-    default: 'Nature',
+    default: 'Природа',
   },
   priority: {
     type: Boolean,
@@ -42,13 +42,13 @@ watch(
 )
 
 const paletteMap = {
-  Nature: { bg1: '#dce5df', bg2: '#7fa08c', accent: '#3f5e4d' },
-  Cities: { bg1: '#ede2d7', bg2: '#c59f84', accent: '#8e513b' },
-  Beaches: { bg1: '#dde8ec', bg2: '#7eb2c2', accent: '#356a7c' },
-  Mountains: { bg1: '#e3e4e8', bg2: '#959fad', accent: '#454e5d' },
+  Природа: { bg1: '#dce5df', bg2: '#7fa08c', accent: '#3f5e4d' },
+  Города: { bg1: '#ede2d7', bg2: '#c59f84', accent: '#8e513b' },
+  Пляжи: { bg1: '#dde8ec', bg2: '#7eb2c2', accent: '#356a7c' },
+  Горы: { bg1: '#e3e4e8', bg2: '#959fad', accent: '#454e5d' },
 }
 
-const fallbackPalette = computed(() => paletteMap[props.category] || paletteMap.Nature)
+const fallbackPalette = computed(() => paletteMap[props.category] || paletteMap.Природа)
 
 function handleLoad() {
   isLoaded.value = true
@@ -81,7 +81,7 @@ function handleError() {
       v-else
       class="place-image__fallback"
       role="img"
-      :aria-label="alt || `${title} illustration`"
+      :aria-label="alt || `Иллюстрация: ${title}`"
       :style="{
         '--fb-bg1': fallbackPalette.bg1,
         '--fb-bg2': fallbackPalette.bg2,

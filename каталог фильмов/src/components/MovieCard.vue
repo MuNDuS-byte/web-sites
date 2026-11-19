@@ -20,11 +20,11 @@ const favorited = computed(() => isFavorite(props.movie.id))
       <div class="poster-wrap">
         <SafeImage
           :src="movie.poster"
-          :alt="`${movie.title} poster`"
+          :alt="`Постер фильма «${movie.title}»`"
           class="poster-img"
         />
 
-        <span class="rating-badge" :aria-label="`Rating ${movie.rating} out of 10`">
+        <span class="rating-badge" :aria-label="`Рейтинг ${movie.rating} из 10`">
           <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
@@ -36,7 +36,7 @@ const favorited = computed(() => isFavorite(props.movie.id))
           class="fav-btn"
           :class="{ 'is-favorited': favorited }"
           :aria-pressed="favorited"
-          :aria-label="favorited ? `Remove ${movie.title} from favorites` : `Add ${movie.title} to favorites`"
+          :aria-label="favorited ? `Удалить «${movie.title}» из избранного` : `Добавить «${movie.title}» в избранное`"
           @click.prevent.stop="toggleFavorite(movie.id)"
         >
           <svg viewBox="0 0 24 24" :fill="favorited ? 'currentColor' : 'none'" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -48,7 +48,7 @@ const favorited = computed(() => isFavorite(props.movie.id))
 
         <div class="poster-overlay" aria-hidden="true">
           <span class="cta-pill">
-            View details
+            Подробнее
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
               <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>

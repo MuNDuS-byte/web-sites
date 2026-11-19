@@ -6,7 +6,7 @@ defineProps({
   },
   selectedCategory: {
     type: String,
-    default: 'All',
+    default: 'Все',
   },
   categories: {
     type: Array,
@@ -38,7 +38,7 @@ function clearSearch() {
 </script>
 
 <template>
-  <section class="filter-bar" aria-label="Search and filter destinations">
+  <section class="filter-bar" aria-label="Поиск и фильтрация направлений">
     <div class="search-field">
       <svg
         class="search-field__icon"
@@ -54,12 +54,12 @@ function clearSearch() {
         <path stroke-linecap="round" d="m20 20-3.5-3.5" />
       </svg>
 
-      <label for="destination-search" class="sr-only">Search destinations</label>
+      <label for="destination-search" class="sr-only">Поиск направлений</label>
       <input
         id="destination-search"
         type="search"
         :value="searchQuery"
-        placeholder="Search destinations, countries, or landscapes..."
+        placeholder="Поиск по названию, стране или региону..."
         autocomplete="off"
         class="search-field__input"
         @input="emit('update:searchQuery', $event.target.value)"
@@ -69,7 +69,7 @@ function clearSearch() {
         v-if="searchQuery"
         type="button"
         class="search-field__clear"
-        aria-label="Clear search query"
+        aria-label="Очистить поиск"
         @click="clearSearch"
       >
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
@@ -79,7 +79,7 @@ function clearSearch() {
     </div>
 
     <div class="filter-bar__controls">
-      <div class="category-tabs" role="tablist" aria-label="Destination categories">
+      <div class="category-tabs" role="tablist" aria-label="Категории направлений">
         <button
           v-for="category in categories"
           :key="category"
@@ -122,7 +122,7 @@ function clearSearch() {
             d="M12 20.4c-.3 0-.6-.1-.8-.3C6.1 15.8 3 12.9 3 9.2 3 6.3 5.2 4 8 4c1.6 0 3.1.8 4 2.1C12.9 4.8 14.4 4 16 4c2.8 0 5 2.3 5 5.2 0 3.7-3.1 6.6-8.2 10.9-.2.2-.5.3-.8.3Z"
           />
         </svg>
-        <span>Saved only</span>
+        <span>Только избранное</span>
         <span class="saved-filter-btn__badge">{{ favoritesCount }}</span>
       </button>
     </div>
@@ -181,7 +181,6 @@ function clearSearch() {
   box-shadow: 0 0 0 3px var(--color-accent-soft);
 }
 
-/* Remove native WebKit search cancel button in favor of custom button */
 .search-field__input::-webkit-search-cancel-button {
   -webkit-appearance: none;
   appearance: none;

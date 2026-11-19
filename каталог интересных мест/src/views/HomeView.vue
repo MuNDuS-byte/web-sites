@@ -11,7 +11,16 @@ const router = useRouter()
 const { favoriteIds, favoritesCount } = useFavorites()
 
 function normalizeCategory(value) {
-  return CATEGORIES.includes(value) ? value : 'All'
+  return CATEGORIES.includes(value) ? value : 'Все'
+}
+
+function pluralizeDestinations(count) {
+  const mod100 = count % 100
+  const mod10 = count % 10
+  if (mod100 >= 11 && mod100 <= 14) return 'направлений'
+  if (mod10 === 1) return 'направление'
+  if (mod10 >= 2 && mod10 <= 4) return 'направления'
+  return 'направлений'
 }
 
 const searchQuery = ref(typeof route.query.q === 'string' ? route.query.q : '')
@@ -41,7 +50,7 @@ function syncQuery() {
   const nextQuery = {}
   const trimmed = searchQuery.value.trim()
   if (trimmed) nextQuery.q = trimmed
-  if (selectedCategory.value !== 'All') nextQuery.category = selectedCategory.value
+  if (selectedCategory.value !== 'Все') nextQuery.category = selectedCategory.value
   if (showFavoritesOnly.value) nextQuery.favorites = 'true'
 
   const currentQ = typeof route.query.q === 'string' ? route.query.q : undefined
@@ -91,9 +100,9 @@ const baseFilteredDestinations = computed(() => {
 })
 
 const categoryCounts = computed(() => {
-  const counts = { All: baseFilteredDestinations.value.length }
+  const counts = { Все: baseFilteredDestinations.value.length }
   for (const category of CATEGORIES) {
-    if (category === 'All') continue
+    if (category === 'Все') continue
     counts[category] = baseFilteredDestinations.value.filter(
       (place) => place.category === category
     ).length
@@ -102,7 +111,7 @@ const categoryCounts = computed(() => {
 })
 
 const filteredDestinations = computed(() => {
-  if (selectedCategory.value === 'All') {
+  if (selectedCategory.value === 'Все') {
     return baseFilteredDestinations.value
   }
   return baseFilteredDestinations.value.filter(
@@ -113,30 +122,30 @@ const filteredDestinations = computed(() => {
 const hasActiveFilters = computed(
   () =>
     searchQuery.value.trim().length > 0 ||
-    selectedCategory.value !== 'All' ||
+    selectedCategory.value !== 'Все' ||
     showFavoritesOnly.value
 )
 
 const resultsSummary = computed(() => {
   const count = filteredDestinations.value.length
-  const noun = count === 1 ? 'destination' : 'destinations'
-  const parts = [`Showing ${count} ${noun}`]
+  const noun = pluralizeDestinations(count)
+  const parts = [`Показано ${count} ${noun}`]
 
-  if (selectedCategory.value !== 'All') {
-    parts.push(`in ${selectedCategory.value}`)
+  if (selectedCategory.value !== 'Все') {
+    parts.push(`в категории «${selectedCategory.value}»`)
   }
   if (showFavoritesOnly.value) {
-    parts.push('from your saved list')
+    parts.push('из вашего избранного')
   }
   if (searchQuery.value.trim()) {
-    parts.push(`matching “${searchQuery.value.trim()}”`)
+    parts.push(`по запросу «${searchQuery.value.trim()}»`)
   }
   return parts.join(' ')
 })
 
 function resetFilters() {
   searchQuery.value = ''
-  selectedCategory.value = 'All'
+  selectedCategory.value = 'Все'
   showFavoritesOnly.value = false
 }
 </script>
@@ -144,13 +153,15 @@ function resetFilters() {
 <template>
   <div class="home-page">
     <section class="hero container">
-      <p class="hero__kicker">Curated Travel Atlas · {{ destinations.length }} Iconic Destinations</p>
+      <p class="hero__kicker">
+        Атлас путешествий · {{ destinations.length }} знаковых мест планеты
+      </p>
       <h1 class="hero__title">
-        Discover extraordinary places<br class="hero__break" />
-        across the world.
+        Откройте удивительные уголки<br class="hero__break" />
+        по всему миру.
       </h1>
       <p class="hero__subtitle">
-        From quiet glacial valleys and alpine limestone spires to sunlit coastal villages and timeless historic cities—explore our handpicked guide to remarkable landscapes.
+        От тихих ледниковых долин и альпийских вершин до солнечных прибрежных городков и древних столиц — исследуйте наш редакционный гид по самым красивым местам Земли.
       </p>
     </section>
 
@@ -172,12 +183,12 @@ function resetFilters() {
           class="results-bar__reset"
           @click="resetFilters"
         >
-          Reset filters
+          Сбросить фильтры
         </button>
       </div>
     </div>
 
-    <section class="container catalog-section" aria-label="Destination catalog">
+    <section class="container catalog-section" aria-label="Каталог направлений">
       <TransitionGroup
         v-if="filteredDestinations.length > 0"
         name="grid-card"
@@ -203,21 +214,21 @@ function resetFilters() {
         <h2 class="empty-state__title">
           {{
             showFavoritesOnly && favoritesCount === 0
-              ? 'Your saved journal is empty'
-              : 'No destinations match your search'
+              ? 'Список избранного пока пуст'
+              : 'По вашему запросу ничего не найдено'
           }}
         </h2>
 
         <p class="empty-state__text">
           {{
             showFavoritesOnly && favoritesCount === 0
-              ? 'Tap the heart icon on any destination card or detail page to bookmark places for your future journeys.'
-              : 'Try adjusting your search keywords or switching to another landscape category.'
+              ? 'Нажмите на значок сердца на карточке или странице направления, чтобы сохранить понравившиеся места для будущих поездок.'
+              : 'Попробуйте изменить поисковый запрос или выбрать другую категорию ландшафтов.'
           }}
         </p>
 
         <button type="button" class="empty-state__btn" @click="resetFilters">
-          Explore all destinations
+          Показать все направления
         </button>
       </div>
     </section>
@@ -240,7 +251,7 @@ function resetFilters() {
   margin: 0;
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-accent);
 }
@@ -248,9 +259,9 @@ function resetFilters() {
 .hero__title {
   margin: 0.85rem 0 0;
   font-family: var(--font-serif);
-  font-size: clamp(2.15rem, 5vw, 3.45rem);
+  font-size: clamp(2.1rem, 4.8vw, 3.35rem);
   font-weight: 500;
-  line-height: 1.12;
+  line-height: 1.14;
   letter-spacing: -0.02em;
   color: var(--color-ink);
 }
@@ -258,7 +269,7 @@ function resetFilters() {
 .hero__subtitle {
   margin: 1.15rem auto 0;
   max-width: 58ch;
-  font-size: clamp(0.95rem, 1.5vw, 1.06rem);
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
   color: var(--color-ink-secondary);
   line-height: 1.7;
 }

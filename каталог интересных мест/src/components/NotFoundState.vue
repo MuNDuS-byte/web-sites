@@ -4,16 +4,16 @@ import { RouterLink } from 'vue-router'
 defineProps({
   eyebrow: {
     type: String,
-    default: '404 — Off the Map',
+    default: '404 — Вне карты',
   },
   title: {
     type: String,
-    default: 'Destination not found',
+    default: 'Направление не найдено',
   },
   message: {
     type: String,
     default:
-      'The place you are looking for may have moved or does not exist in our current journal.',
+      'Возможно, место, которое вы ищете, было перемещено или отсутствует в нашем текущем атласе.',
   },
 })
 </script>
@@ -35,7 +35,7 @@ defineProps({
         <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.5 10h-11m4.5-4.5L4.5 10 9 14.5" />
         </svg>
-        Back to destinations
+        К каталогу направлений
       </RouterLink>
     </div>
   </section>
@@ -69,7 +69,7 @@ defineProps({
   margin: 0;
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-accent);
 }

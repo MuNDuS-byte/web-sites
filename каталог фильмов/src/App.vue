@@ -16,8 +16,8 @@ import AppNavbar from '@/components/AppNavbar.vue'
 
     <footer class="app-footer">
       <div class="container footer-inner">
-        <span class="footer-brand">Movie Explorer</span>
-        <span class="footer-note">Curated discovery catalog · Local favorites enabled</span>
+        <span class="footer-brand">КиноГид</span>
+        <span class="footer-note">Избранный каталог кино · Локальное сохранение избранного</span>
       </div>
     </footer>
   </div>

@@ -29,6 +29,8 @@ import theAmberForestBackdrop from '@/assets/backdrops/the-amber-forest.svg'
 import staticFrequencyPoster from '@/assets/posters/static-frequency.svg'
 import staticFrequencyBackdrop from '@/assets/backdrops/static-frequency.svg'
 
+export const ALL_GENRE = 'Все'
+
 export const FALLBACK_POSTER =
   'data:image/svg+xml;charset=UTF-8,' +
   encodeURIComponent(
@@ -42,254 +44,259 @@ export const FALLBACK_POSTER =
       <rect width="600" height="900" fill="url(#g)"/>
       <circle cx="300" cy="410" r="72" fill="none" stroke="#334155" stroke-width="3"/>
       <path d="M282 378L334 410L282 442V378Z" fill="#64748b"/>
-      <text x="300" y="535" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="22" letter-spacing="3">MOVIE EXPLORER</text>
+      <text x="300" y="535" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="22" letter-spacing="4">КИНОГИД</text>
     </svg>`
   )
 
 export const MOVIES = [
   {
     id: 'orbital-silence',
-    title: 'Orbital Silence',
+    title: 'Орбитальная тишина',
     year: 2025,
-    genre: 'Sci-Fi',
+    genre: 'Фантастика',
     rating: 8.8,
-    runtime: '148 min',
-    director: 'Elena Vance',
-    cast: ['Maren Lind', 'Daniel Osei', 'Taro Sato'],
-    tagline: 'Beyond the last relay, every signal carries a ghost.',
+    runtime: '148 мин',
+    director: 'Елена Вэнс',
+    cast: ['Марен Линд', 'Дэниел Осей', 'Таро Сато'],
+    tagline: 'За последним ретранслятором каждый сигнал хранит призрака.',
     description:
-      'Stationed aboard a solitary deep-space beacon orbiting a fading white dwarf, telemetry engineer Mara Vance intercepts a mathematical cadence repeating from inside the star’s gravity well. With her return window shrinking to forty hours, she must decide whether to sever contact or cross the silent horizon to verify the source.',
+      'На одиноком глубококосмическом маяке, вращающемся вокруг угасающего белого карлика, инженер телеметрии Мара Вэнс перехватывает математический ритм, исходящий из самой гравитационной воронки звезды. Пока окно возвращения сжимается до сорока часов, ей предстоит решить: разорвать связь или пересечь безмолвный горизонт ради разгадки.',
     accentColor: '#f59e0b',
     poster: orbitalSilencePoster,
     backdrop: orbitalSilenceBackdrop
   },
   {
     id: 'letters-from-kyoto',
-    title: 'Letters from Kyoto',
+    title: 'Письма из Киото',
     year: 2022,
-    genre: 'Drama',
+    genre: 'Драма',
     rating: 8.9,
-    runtime: '122 min',
-    director: 'Haruka Mori',
-    cast: ['Aoi Takahashi', 'Renji Kobayashi', 'Hana Yoshida'],
-    tagline: 'Some stories wait years for the right page to open.',
+    runtime: '122 мин',
+    director: 'Харука Мори',
+    cast: ['Аой Такахаси', 'Рэндзи Кобаяси', 'Хана Ёсида'],
+    tagline: 'Некоторые истории годами ждут, чтобы открыли нужную страницу.',
     description:
-      'Inside a quiet secondhand bookshop tucked beneath maple eaves in Kyoto, an architectural restorer discovers a handwritten letter tucked into an out-of-print essay collection. Across three changing autumns, an anonymous correspondence unfolds between two strangers learning to let go of the past.',
+      'В тихой букинистической лавке под кленовыми крышами Киото реставратор старинных зданий находит рукописное письмо, забытое в редком сборнике эссе. На протяжении трёх осенних сезонов между двумя незнакомцами завязывается анонимная переписка, помогающая обоим отпустить прошлое.',
     accentColor: '#fb7185',
     poster: lettersFromKyotoPoster,
     backdrop: lettersFromKyotoBackdrop
   },
   {
     id: 'cinder-crown',
-    title: 'Cinder Crown',
+    title: 'Пепельная корона',
     year: 2025,
-    genre: 'Fantasy',
+    genre: 'Фэнтези',
     rating: 8.7,
-    runtime: '154 min',
-    director: 'Rowan Alaric',
-    cast: ['Freya Halvorsen', 'Caleb Thorne', 'Soraia Mendes'],
-    tagline: 'When the eternal forge cools, the map remembers.',
+    runtime: '154 мин',
+    director: 'Роуэн Аларик',
+    cast: ['Фрейя Хальворсен', 'Калеб Торн', 'Сорайя Мендеш'],
+    tagline: 'Когда вечная кузница остывает, память сохраняет только карта.',
     description:
-      'As the volcanic archipelago’s ancient hearth begins to die, a disgraced royal cartographer is sent beyond the ash reefs to chart a mythic star-gate erased from imperial atlases. Pursued by rival guild fleets, she uncovers an older pact bound to the islands themselves.',
+      'Когда древний очаг вулканического архипелага начинает угасать, опального королевского картографа отправляют за пепельные рифы на поиски мифических звёздных врат, стёртых со всех имперских атласов. Преследуемая флотами враждующих гильдий, она раскрывает забытый договор, скрепляющий сами острова.',
     accentColor: '#f97316',
     poster: cinderCrownPoster,
     backdrop: cinderCrownBackdrop
   },
   {
     id: 'paper-lanterns-of-the-sky',
-    title: 'Paper Lanterns of the Sky',
+    title: 'Бумажные фонари небес',
     year: 2023,
-    genre: 'Animation',
+    genre: 'Анимация',
     rating: 8.6,
-    runtime: '104 min',
-    director: 'Mei-Ling Zhou',
-    cast: ['Lin Wei', 'Keiko Tanaka', 'Julian Park'],
-    tagline: 'Sail above the clouds to bring the night home.',
+    runtime: '104 мин',
+    director: 'Мэй-Лин Чжоу',
+    cast: ['Линь Вэй', 'Кэйко Танака', 'Джулиан Пак'],
+    tagline: 'Поднимись выше облаков, чтобы вернуть ночь домой.',
     description:
-      'When a runaway autumn gale scatters the lanterns that guide constellations across the upper atmosphere, a spirited young wind-weaver launches a folded paper skiff into the cloud sea. Alongside a grumpy barometer spirit, she races the sunrise to restore the sky’s lost stars.',
+      'Когда шальной осенний вихрь рассеивает фонари, ведущие созвездия по верхним слоям неба, отважная юная ткачиха ветров спускает на облачное море сложенный из бумаги чёлн. Вместе с ворчливым духом барометра она спешит опередить рассвет и вернуть небу потерянные звёзды.',
     accentColor: '#fbbf24',
     poster: paperLanternsPoster,
     backdrop: paperLanternsBackdrop
   },
   {
     id: 'static-frequency',
-    title: 'Static Frequency',
+    title: 'Частота помех',
     year: 2026,
-    genre: 'Thriller',
+    genre: 'Триллер',
     rating: 8.6,
-    runtime: '124 min',
-    director: 'Julian Mercer',
-    cast: ['Nora Albers', 'Gideon Brooks', 'Samira Haddad'],
-    tagline: 'Tomorrow is already broadcasting.',
+    runtime: '124 мин',
+    director: 'Джулиан Мерсер',
+    cast: ['Нора Альберс', 'Гидеон Брукс', 'Самира Хаддад'],
+    tagline: 'Завтрашний день уже вышел в эфир.',
     description:
-      'During a winter blackout, a late-night shortwave archivist tunes into an unlicensed numbers station whose coded weather bulletins describe real accidents exactly forty-eight hours before they occur. Tracing the transmitter’s moving coordinates pulls him into a high-stakes game of prediction and fate.',
+      'Во время зимнего отключения электричества архивист коротковолнового радио настраивается на незарегистрированную номерную станцию, чьи зашифрованные сводки погоды с пугающей точностью описывают реальные происшествия за сорок восемь часов до них. Поиски передвижного передатчика втягивают его в опасную игру с предвидением и судьбой.',
     accentColor: '#22c55e',
     poster: staticFrequencyPoster,
     backdrop: staticFrequencyBackdrop
   },
   {
     id: 'neon-meridian',
-    title: 'Neon Meridian',
+    title: 'Неоновый меридиан',
     year: 2024,
-    genre: 'Sci-Fi',
+    genre: 'Фантастика',
     rating: 8.5,
-    runtime: '132 min',
-    director: 'Kenji Sato',
-    cast: ['Yuki Morita', 'Devon Vance', 'Claire DuBois'],
-    tagline: 'In a rain-drenched city, memory is the rarest currency.',
+    runtime: '132 мин',
+    director: 'Кэндзи Сато',
+    cast: ['Юки Морита', 'Девон Вэнс', 'Клэр Дюбуа'],
+    tagline: 'В городе вечного дождя память — самая дорогая валюта.',
     description:
-      'An independent data courier navigating the vertical avenues of Neo-Kobe takes a routine overnight parcel only to discover it holds an unencrypted neural recording tied to a corporate blackout. Hunted by autonomous drones and rival brokers, he has until dawn to expose who rewrote the city’s archive.',
+      'Независимый курьер данных, курсирующий по вертикальным проспектам Нео-Кобе, берётся за обычную ночную доставку и обнаруживает внутри незашифрованную нейрозапись о масштабном корпоративном блэкауте. Преследуемый автономными дронами и брокерами теневого рынка, он должен успеть до рассвета раскрыть того, кто переписал городской архив.',
     accentColor: '#ec4899',
     poster: neonMeridianPoster,
     backdrop: neonMeridianBackdrop
   },
   {
     id: 'winter-symphony',
-    title: 'Winter Symphony',
+    title: 'Зимняя симфония',
     year: 2020,
-    genre: 'Drama',
+    genre: 'Драма',
     rating: 8.5,
-    runtime: '129 min',
-    director: 'Sofia Lindqvist',
-    cast: ['Ingrid Solberg', 'Lukas Berg', 'Maja Novak'],
-    tagline: 'Listen closely to what remains when the silence settles.',
+    runtime: '129 мин',
+    director: 'София Линдквист',
+    cast: ['Ингрид Сольберг', 'Лукас Берг', 'Майя Новак'],
+    tagline: 'Прислушайся к тому, что остаётся, когда наступает тишина.',
     description:
-      'Confronted with progressive hearing loss at the height of her career, principal cellist Astrid Holm retreats to a coastal Nordic conservatory to prepare one final concerto. Through tactile rehearsal and an unexpected mentorship with an eccentric acoustic engineer, she rediscovers music as pure resonance.',
+      'Столкнувшись с прогрессирующей потерей слуха на пике карьеры, ведущая виолончелистка Астрид Хольм уезжает в прибрежную северную консерваторию, чтобы подготовить свой последний концерт. Через тактильные репетиции и неожиданное знакомство с эксцентричным инженером-акустиком она заново открывает музыку как чистый резонанс.',
     accentColor: '#93c5fd',
     poster: winterSymphonyPoster,
     backdrop: winterSymphonyBackdrop
   },
   {
     id: 'the-glass-harbor',
-    title: 'The Glass Harbor',
+    title: 'Стеклянная гавань',
     year: 2023,
-    genre: 'Thriller',
+    genre: 'Триллер',
     rating: 8.4,
-    runtime: '119 min',
-    director: 'Henrik Lindholm',
-    cast: ['Mikkel Sørensen', 'Eva Lind', 'Tomasz Kowalski'],
-    tagline: 'Every tide returns what the fog tried to keep.',
+    runtime: '119 мин',
+    director: 'Хенрик Линдхольм',
+    cast: ['Миккель Сёренсен', 'Ева Линд', 'Томаш Ковальски'],
+    tagline: 'Каждый прилив возвращает то, что пытался скрыть туман.',
     description:
-      'When an automated research trawler drifts back into a remote North Sea fjord completely intact—and completely empty—maritime investigator Kasper Nordin is dispatched before insurers seal the hull. The deeper he digs into the vessel’s bridge logs, the clearer it becomes that the crew never meant to vanish.',
+      'Когда автоматизированный исследовательский траулер возвращается в уединённый фьорд Северного моря абсолютно невредимым — и совершенно пустым, — морского следователя Каспера Нордина вызывают раньше, чем страховщики опечатают корпус. Чем глубже он изучает судовые журналы, тем очевиднее становится, что экипаж не исчезал случайно.',
     accentColor: '#2dd4bf',
     poster: theGlassHarborPoster,
     backdrop: theGlassHarborBackdrop
   },
   {
     id: 'starlight-clockwork',
-    title: 'Starlight Clockwork',
+    title: 'Звёздный механизм',
     year: 2024,
-    genre: 'Animation',
+    genre: 'Анимация',
     rating: 8.4,
-    runtime: '98 min',
-    director: 'Lucas Beaumont',
-    cast: ['Amélie Laurent', 'Arthur Finch', 'Mateo Silva'],
-    tagline: 'One missing gear can freeze the night forever.',
+    runtime: '98 мин',
+    director: 'Лукас Бомон',
+    cast: ['Амели Лоран', 'Артур Финч', 'Матео Сильва'],
+    tagline: 'Одна потерянная шестерёнка может заморозить ночь навсегда.',
     description:
-      'Deep inside a towering brass planetarium that regulates twilight and dawn for an enchanted valley, a timid apprentice accidentally loosens the lunar escapement. With midnight stretching endlessly over the rooftops, she must climb the mechanical heavens and rebuild the sky’s heartbeat.',
+      'Глубоко внутри исполинского латунного планетария, управляющего сменой сумерек и рассветов над зачарованной долиной, застенчивая ученица случайно срывает лунный анкер. Пока полночь бесконечно тянется над крышами, ей предстоит взобраться к механическим небесам и заново запустить сердцебиение неба.',
     accentColor: '#fcd34d',
     poster: starlightClockworkPoster,
     backdrop: starlightClockworkBackdrop
   },
   {
     id: 'the-seventh-room',
-    title: 'The Seventh Room',
+    title: 'Седьмая комната',
     year: 2023,
-    genre: 'Mystery',
+    genre: 'Детектив',
     rating: 8.3,
-    runtime: '116 min',
-    director: 'Arthur Pendelton',
-    cast: ['Helena Vance', 'Victor Hugo', 'Priya Nair'],
-    tagline: 'The blueprint has six rooms. Count the doors again.',
+    runtime: '116 мин',
+    director: 'Артур Пендлтон',
+    cast: ['Хелена Вэнс', 'Виктор Гюго', 'Прия Наир'],
+    tagline: 'На чертеже шесть комнат. Пересчитай двери ещё раз.',
     description:
-      'Six acclaimed architects are invited to an isolated modernist villa in the Swiss Alps to bid on restoring a late visionary’s estate. When a sudden avalanche cuts off the valley road, they notice the building’s interior geometry conceals an unrecorded seventh chamber—and someone among them already holds the key.',
+      'Шестерых знаменитых архитекторов приглашают в уединённую модернистскую виллу в Швейцарских Альпах, чтобы побороться за проект реставрации поместья покойного визионера. Когда внезапная лавина отрезает дорогу в долину, гости замечают, что внутренняя геометрия дома скрывает неучтённую седьмую комнату — и ключ от неё уже у кого-то в руках.',
     accentColor: '#10b981',
     poster: theSeventhRoomPoster,
     backdrop: theSeventhRoomBackdrop
   },
   {
     id: 'the-amber-forest',
-    title: 'The Amber Forest',
+    title: 'Янтарный лес',
     year: 2022,
-    genre: 'Fantasy',
+    genre: 'Фэнтези',
     rating: 8.3,
-    runtime: '137 min',
-    director: 'Freya Solberg',
-    cast: ['Sienna Brooks', 'Ewan MacLeod', 'Klara Lind'],
-    tagline: 'Ancient roots never forget a promise.',
+    runtime: '137 мин',
+    director: 'Фрейя Сольберг',
+    cast: ['Сиенна Брукс', 'Юэн Маклауд', 'Клара Линд'],
+    tagline: 'Древние корни никогда не забывают обещаний.',
     description:
-      'Venturing beyond the petrified timberline to find a cure for her village’s creeping frost, a young herbalist enters a primordial woodland where golden tree resin preserves living fragments of forgotten centuries. Guided by a luminous stag, she learns the forest’s remedy demands a steep exchange.',
+      'Отправившись за границу окаменелого леса в поисках лекарства от надвигающейся на деревню стужи, молодая травница попадает в первозданную чащу, где золотистая смола хранит живые отголоски забытых веков. Ведомая светящимся оленем, она узнаёт, что дар леса потребует высокой цены.',
     accentColor: '#f59e0b',
     poster: theAmberForestPoster,
     backdrop: theAmberForestBackdrop
   },
   {
     id: 'velvet-alibi',
-    title: 'Velvet Alibi',
+    title: 'Бархатное алиби',
     year: 2024,
-    genre: 'Mystery',
+    genre: 'Детектив',
     rating: 8.2,
-    runtime: '114 min',
-    director: 'Clara Moreau',
-    cast: ['Olivier Laurent', 'Bianca Rossi', 'Stefan Klein'],
-    tagline: 'Every melody hides a witness.',
+    runtime: '114 мин',
+    director: 'Клара Моро',
+    cast: ['Оливье Лоран', 'Бьянка Росси', 'Штефан Кляйн'],
+    tagline: 'В каждой мелодии скрыт свидетель.',
     description:
-      'In rain-slicked 1964 Vienna, a retired jazz pianist is asked to authenticate a stolen, unfinished concerto discovered in an antique vault. As each bar of the manuscript points back to an unsolved gala disappearance, his quiet comeback becomes a perilous nocturnal investigation.',
+      'В дождливой Вене 1964 года джазового пианиста на пенсии просят подтвердить подлинность украденного незаконченного концерта, найденного в старинном хранилище. Когда каждый такт партитуры начинает указывать на нераскрытое исчезновение во время гала-вечера, его тихое возвращение оборачивается опасным ночным расследованием.',
     accentColor: '#eab308',
     poster: velvetAlibiPoster,
     backdrop: velvetAlibiBackdrop
   },
   {
     id: 'apex-protocol',
-    title: 'Apex Protocol',
+    title: 'Протокол «Апекс»',
     year: 2024,
-    genre: 'Action',
+    genre: 'Боевик',
     rating: 8.1,
-    runtime: '126 min',
-    director: 'Marcus Thorne',
-    cast: ['Liam Mercer', 'Zara Reyes', 'Viktor Petrov'],
-    tagline: 'Six hours. One line. Zero margin for error.',
+    runtime: '126 мин',
+    director: 'Маркус Торн',
+    cast: ['Лиам Мерсер', 'Зара Рейес', 'Виктор Петров'],
+    tagline: 'Шесть часов. Одна ветка. Ноль права на ошибку.',
     description:
-      'After an automated high-altitude freight corridor is hijacked mid-blizzard, a veteran crisis specialist boards the runaway express to disarm a compromised guidance core before it reaches the valley terminal. Outnumbered and cut off from command, every carriage demands split-second precision.',
+      'После захвата автоматизированной высокогорной железнодорожной линии посреди снежной бури опытный специалист по кризисным операциям пробирается на неуправляемый экспресс, чтобы обезвредить взломанный модуль наведения до выхода к терминалу в долине. В меньшинстве и без связи со штабом каждый вагон требует безупречной точности.',
     accentColor: '#ef4444',
     poster: apexProtocolPoster,
     backdrop: apexProtocolBackdrop
   },
   {
     id: 'echoes-of-the-deep',
-    title: 'Echoes of the Deep',
+    title: 'Эхо глубин',
     year: 2025,
-    genre: 'Thriller',
+    genre: 'Триллер',
     rating: 8.0,
-    runtime: '111 min',
-    director: 'Nadia Okafor',
-    cast: ['Simone Baptiste', 'Rohan Mehta', 'Jonas Weber'],
-    tagline: 'At ten thousand meters, the ocean answers back.',
+    runtime: '111 мин',
+    director: 'Надия Окафор',
+    cast: ['Симона Батист', 'Рохан Мехта', 'Йонас Вебер'],
+    tagline: 'На глубине десять тысяч метров океан начинает отвечать.',
     description:
-      'A three-person bathymetry team mapping hydrothermal vents along an uncharted Pacific trench picks up rhythmic acoustic pulses matching their own sonar pings. As hull pressure mounts and topside comms drop to static, the crew realizes they are not alone in the dark.',
+      'Экипаж батискафа из трёх исследователей, картографирующий гидротермальные источники в неисследованной впадине Тихого океана, фиксирует ритмичные акустические импульсы, в точности повторяющие сигналы их сонара. Давление на корпус растёт, связь с поверхностью тонет в помехах, и команда понимает, что в этой темноте они не одни.',
     accentColor: '#06b6d4',
     poster: echoesOfTheDeepPoster,
     backdrop: echoesOfTheDeepBackdrop
   },
   {
     id: 'red-horizon',
-    title: 'Red Horizon',
+    title: 'Красный горизонт',
     year: 2021,
-    genre: 'Action',
+    genre: 'Боевик',
     rating: 7.9,
-    runtime: '118 min',
-    director: 'Diego Salazar',
-    cast: ['Mateo Cruz', 'Elena Morales', 'Jack Dawson'],
-    tagline: 'Outrun the dust. Beat the dawn.',
+    runtime: '118 мин',
+    director: 'Диего Салазар',
+    cast: ['Матео Крус', 'Елена Моралес', 'Джек Доусон'],
+    tagline: 'Обгони пыль. Успей до рассвета.',
     description:
-      'Stranded in the remote salt flats of the Atacama Desert after an endurance rally goes off-grid, two rival drivers are forced to share one battered vehicle when an armed salvage crew closes in on a downed satellite canister. Survival means crossing two hundred kilometers of canyon terrain before sunrise.',
+      'Оказавшись в ловушке среди солончаков пустыни Атакама после схода с маршрута ралли-рейда, двое непримиримых соперников вынуждены делить один потрёпанный внедорожник, когда на след упавшей спутниковой капсулы выходит вооружённый отряд. Чтобы выжить, им нужно преодолеть двести километров каньонов до восхода солнца.',
     accentColor: '#ea580c',
     poster: redHorizonPoster,
     backdrop: redHorizonBackdrop
   }
 ]
 
-export const GENRES = ['All', ...Array.from(new Set(MOVIES.map((movie) => movie.genre))).sort()]
+export const GENRES = [
+  ALL_GENRE,
+  ...Array.from(new Set(MOVIES.map((movie) => movie.genre))).sort((a, b) =>
+    a.localeCompare(b, 'ru')
+  )
+]
 
 export function getMovieById(id) {
   return MOVIES.find((movie) => movie.id === String(id)) || null

@@ -18,7 +18,7 @@ const relatedMovies = computed(() => getRelatedMovies(movie.value, 4))
 watch(
   movie,
   (current) => {
-    document.title = current ? `${current.title} — Movie Explorer` : 'Movie Not Found — Movie Explorer'
+    document.title = current ? `${current.title} — КиноГид` : 'Фильм не найден — КиноГид'
   },
   { immediate: true }
 )
@@ -45,7 +45,7 @@ function goHome() {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M19 12H5M11 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          Back to Catalog
+          Назад в каталог
         </RouterLink>
       </div>
 
@@ -54,7 +54,7 @@ function goHome() {
           <div class="poster-frame">
             <SafeImage
               :src="movie.poster"
-              :alt="`${movie.title} poster`"
+              :alt="`Постер фильма «${movie.title}»`"
               eager
             />
           </div>
@@ -68,10 +68,10 @@ function goHome() {
           </div>
 
           <h1 class="movie-title">{{ movie.title }}</h1>
-          <p v-if="movie.tagline" class="movie-tagline">“{{ movie.tagline }}”</p>
+          <p v-if="movie.tagline" class="movie-tagline">«{{ movie.tagline }}»</p>
 
           <div class="action-row">
-            <div class="rating-card" :aria-label="`Rating ${movie.rating} out of 10`">
+            <div class="rating-card" :aria-label="`Рейтинг ${movie.rating} из 10`">
               <svg class="rating-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
@@ -97,39 +97,39 @@ function goHome() {
                   d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                 />
               </svg>
-              <span>{{ favorited ? 'Remove from Favorites' : 'Add to Favorites' }}</span>
+              <span>{{ favorited ? 'Убрать из избранного' : 'Добавить в избранное' }}</span>
             </button>
           </div>
 
           <div class="synopsis-block">
-            <h2 class="section-label">Synopsis</h2>
+            <h2 class="section-label">Описание</h2>
             <p class="synopsis-text">{{ movie.description }}</p>
           </div>
 
           <dl class="credits-grid">
             <div class="credit-item">
-              <dt>Director</dt>
+              <dt>Режиссёр</dt>
               <dd>{{ movie.director }}</dd>
             </div>
             <div class="credit-item">
-              <dt>Starring</dt>
+              <dt>В главных ролях</dt>
               <dd>{{ movie.cast.join(', ') }}</dd>
             </div>
             <div class="credit-item">
-              <dt>Release Year</dt>
+              <dt>Год выхода</dt>
               <dd>{{ movie.year }}</dd>
             </div>
             <div class="credit-item">
-              <dt>Runtime</dt>
+              <dt>Длительность</dt>
               <dd>{{ movie.runtime }}</dd>
             </div>
           </dl>
         </div>
       </article>
 
-      <section v-if="relatedMovies.length" class="related-section" aria-label="More movies to explore">
+      <section v-if="relatedMovies.length" class="related-section" aria-label="Похожие фильмы">
         <div class="related-header">
-          <h2 class="related-title">More to Explore</h2>
+          <h2 class="related-title">Смотрите также</h2>
         </div>
         <div class="related-grid">
           <MovieCard
@@ -144,9 +144,9 @@ function goHome() {
 
   <div v-else class="not-found-wrap container">
     <EmptyState
-      title="Movie not found"
-      description="We couldn’t find a movie matching this ID. It may have been moved or removed from the catalog."
-      action-label="Back to Catalog"
+      title="Фильм не найден"
+      description="Нам не удалось найти фильм с таким идентификатором. Возможно, он был перемещён или удалён из каталога."
+      action-label="Вернуться в каталог"
       @action="goHome"
     />
   </div>

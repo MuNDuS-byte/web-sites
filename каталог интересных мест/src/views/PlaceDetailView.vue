@@ -44,7 +44,7 @@ function handleFavoriteToggle() {
         >
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.5 10h-11m4.5-4.5L4.5 10 9 14.5" />
         </svg>
-        <span>Back to destinations</span>
+        <span>Назад к направлениям</span>
       </RouterLink>
 
       <button
@@ -69,7 +69,7 @@ function handleFavoriteToggle() {
             d="M12 20.4c-.3 0-.6-.1-.8-.3C6.1 15.8 3 12.9 3 9.2 3 6.3 5.2 4 8 4c1.6 0 3.1.8 4 2.1C12.9 4.8 14.4 4 16 4c2.8 0 5 2.3 5 5.2 0 3.7-3.1 6.6-8.2 10.9-.2.2-.5.3-.8.3Z"
           />
         </svg>
-        <span>{{ favorited ? 'Saved in Favorites' : 'Add to Favorites' }}</span>
+        <span>{{ favorited ? 'В избранном' : 'Добавить в избранное' }}</span>
       </button>
     </div>
 
@@ -88,7 +88,7 @@ function handleFavoriteToggle() {
       <p class="detail-header__tagline">{{ place.tagline }}</p>
     </header>
 
-    <section class="container detail-hero-wrap" aria-label="Destination photograph">
+    <section class="container detail-hero-wrap" aria-label="Фотография направления">
       <div class="detail-hero">
         <PlaceImage
           :src="place.image"
@@ -108,7 +108,7 @@ function handleFavoriteToggle() {
     <div class="container detail-layout">
       <article class="detail-story">
         <section aria-labelledby="overview-heading">
-          <h2 id="overview-heading" class="section-label">Editorial Overview</h2>
+          <h2 id="overview-heading" class="section-label">О направлении</h2>
           <div class="story-prose">
             <p
               v-for="(paragraph, index) in place.description"
@@ -121,7 +121,7 @@ function handleFavoriteToggle() {
         </section>
 
         <section class="facts-section" aria-labelledby="facts-heading">
-          <h2 id="facts-heading" class="facts-section__title">Interesting Facts</h2>
+          <h2 id="facts-heading" class="facts-section__title">Интересные факты</h2>
           <ol class="facts-list">
             <li v-for="(fact, index) in place.facts" :key="index" class="facts-list__item">
               <span class="facts-list__num">{{ String(index + 1).padStart(2, '0') }}</span>
@@ -131,21 +131,21 @@ function handleFavoriteToggle() {
         </section>
       </article>
 
-      <aside class="detail-sidebar" aria-label="Location and travel notes">
+      <aside class="detail-sidebar" aria-label="Расположение и путевые заметки">
         <div class="info-card">
-          <h2 class="info-card__title">Location & Field Notes</h2>
+          <h2 class="info-card__title">Расположение и заметки</h2>
 
           <dl class="info-list">
             <div class="info-list__row">
-              <dt>Country</dt>
+              <dt>Страна</dt>
               <dd>{{ place.country }}</dd>
             </div>
             <div class="info-list__row">
-              <dt>Region</dt>
+              <dt>Регион</dt>
               <dd>{{ place.region }}</dd>
             </div>
             <div class="info-list__row">
-              <dt>Category</dt>
+              <dt>Категория</dt>
               <dd>
                 <RouterLink
                   :to="{ name: 'home', query: { category: place.category } }"
@@ -156,17 +156,17 @@ function handleFavoriteToggle() {
               </dd>
             </div>
             <div class="info-list__row">
-              <dt>Coordinates</dt>
+              <dt>Координаты</dt>
               <dd class="info-list__mono">{{ place.coordinates }}</dd>
             </div>
             <div class="info-list__row">
-              <dt>Best Time to Visit</dt>
+              <dt>Лучший сезон</dt>
               <dd>{{ place.bestTime }}</dd>
             </div>
           </dl>
 
           <div class="highlights-block">
-            <h3 class="highlights-block__label">Highlights</h3>
+            <h3 class="highlights-block__label">Главное</h3>
             <ul class="highlights-list">
               <li v-for="item in place.highlights" :key="item" class="highlights-list__item">
                 {{ item }}
@@ -196,7 +196,7 @@ function handleFavoriteToggle() {
                 d="M12 20.4c-.3 0-.6-.1-.8-.3C6.1 15.8 3 12.9 3 9.2 3 6.3 5.2 4 8 4c1.6 0 3.1.8 4 2.1C12.9 4.8 14.4 4 16 4c2.8 0 5 2.3 5 5.2 0 3.7-3.1 6.6-8.2 10.9-.2.2-.5.3-.8.3Z"
               />
             </svg>
-            <span>{{ favorited ? 'Remove from Favorites' : 'Save to Favorites' }}</span>
+            <span>{{ favorited ? 'Убрать из избранного' : 'Сохранить в избранное' }}</span>
           </button>
         </div>
       </aside>
@@ -209,10 +209,10 @@ function handleFavoriteToggle() {
     >
       <div class="related-section__header">
         <div>
-          <p class="section-label">Continue Exploring</p>
-          <h2 id="related-heading" class="related-section__title">More Remarkable Places</h2>
+          <p class="section-label">Продолжить путешествие</p>
+          <h2 id="related-heading" class="related-section__title">Другие удивительные места</h2>
         </div>
-        <RouterLink to="/" class="related-section__all">View full catalog →</RouterLink>
+        <RouterLink to="/" class="related-section__all">Весь каталог →</RouterLink>
       </div>
 
       <div class="related-grid">
@@ -223,9 +223,9 @@ function handleFavoriteToggle() {
 
   <NotFoundState
     v-else
-    eyebrow="Destination Unavailable"
-    title="We couldn’t find that destination"
-    :message="`No destination matching “${id}” exists in our Travel Places atlas. Browse the catalog to discover other remarkable places.`"
+    eyebrow="Направление недоступно"
+    title="Мы не нашли это место"
+    :message="`Направление с идентификатором «${id}» отсутствует в нашем атласе «Места мира». Откройте каталог, чтобы выбрать другие маршруты.`"
   />
 </template>
 
@@ -311,7 +311,7 @@ function handleFavoriteToggle() {
   color: var(--color-accent);
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -324,7 +324,7 @@ function handleFavoriteToggle() {
 .detail-location-crumb {
   font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-ink-muted);
 }
@@ -332,9 +332,9 @@ function handleFavoriteToggle() {
 .detail-header__title {
   margin: 0.85rem 0 0;
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-size: clamp(2.25rem, 5.2vw, 3.75rem);
   font-weight: 500;
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--color-ink);
 }
@@ -377,7 +377,7 @@ function handleFavoriteToggle() {
   background: linear-gradient(to top, rgba(20, 19, 17, 0.62), rgba(20, 19, 17, 0));
   color: rgba(255, 255, 255, 0.9);
   font-size: 0.78rem;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
 }
 
 .detail-layout {
@@ -391,7 +391,7 @@ function handleFavoriteToggle() {
   margin: 0;
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-accent);
 }
@@ -503,11 +503,12 @@ function handleFavoriteToggle() {
 }
 
 .info-list__row dt {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-ink-muted);
+  flex-shrink: 0;
 }
 
 .info-list__row dd {
@@ -540,7 +541,7 @@ function handleFavoriteToggle() {
   margin: 0 0 0.75rem;
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-ink-muted);
 }

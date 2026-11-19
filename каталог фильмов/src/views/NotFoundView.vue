@@ -12,9 +12,9 @@ function backToCatalog() {
 <template>
   <div class="not-found-page container">
     <EmptyState
-      title="Page not found"
-      description="The page you’re looking for doesn’t exist. Head back to the catalog to continue exploring movies."
-      action-label="Back to Catalog"
+      title="Страница не найдена"
+      description="Запрашиваемая страница не существует. Вернитесь в каталог, чтобы продолжить знакомство с фильмами."
+      action-label="Вернуться в каталог"
       @action="backToCatalog"
     />
   </div>
