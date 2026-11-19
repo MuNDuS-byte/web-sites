@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#190b0f"/>
+      <stop offset="52%" stop-color="#34131c"/>
+      <stop offset="100%" stop-color="#140c10"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="45%" r="68%">
+      <stop offset="55%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.62"/>
+    </radialGradient>
+    
+  <filter id="grain" x="0%" y="0%" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
+    <feColorMatrix type="saturate" values="0" in="noise" result="mono"/>
+    <feComponentTransfer in="mono" result="soft">
+      <feFuncA type="linear" slope="0.06"/>
+    </feComponentTransfer>
+    <feBlend mode="overlay" in="SourceGraphic" in2="soft"/>
+  </filter>
+  <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="18" result="blur"/>
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+  <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="36"/>
+  </filter>
+
+    
+      <linearGradient id="kyotoMoon" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#fff1f2"/>
+        <stop offset="100%" stop-color="#fda4af" stop-opacity="0.7"/>
+      </linearGradient>
+      <linearGradient id="lantern" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#fef08a"/>
+        <stop offset="100%" stop-color="#f97316"/>
+      </linearGradient>
+    
+  </defs>
+  <g filter="url(#grain)">
+    <rect width="1600" height="900" fill="url(#bg)"/>
+    
+      <circle cx="1080" cy="350" r="185" fill="url(#kyotoMoon)" opacity="0.85"/>
+      <path d="M620 490 Q1080 440 1540 490 L1500 525 Q1080 485 660 525 Z" fill="#13080b"/>
+      <rect x="1050" y="520" width="60" height="90" rx="18" fill="url(#lantern)" filter="url(#glow)"/>
+      <g fill="#fb7185" opacity="0.75">
+        <ellipse cx="420" cy="240" rx="16" ry="8" transform="rotate(-30 420 240)"/>
+        <ellipse cx="780" cy="290" rx="14" ry="7" transform="rotate(20 780 290)"/>
+        <ellipse cx="1360" cy="260" rx="16" ry="8" transform="rotate(-40 1360 260)"/>
+      </g>
+    
+    <rect width="1600" height="900" fill="url(#vignette)"/>
+  </g>
+</svg>

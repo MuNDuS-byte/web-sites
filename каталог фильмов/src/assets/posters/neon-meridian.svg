@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090418"/>
+      <stop offset="52%" stop-color="#1b0b34"/>
+      <stop offset="100%" stop-color="#081b2e"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="45%" r="68%">
+      <stop offset="55%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.62"/>
+    </radialGradient>
+    
+  <filter id="grain" x="0%" y="0%" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
+    <feColorMatrix type="saturate" values="0" in="noise" result="mono"/>
+    <feComponentTransfer in="mono" result="soft">
+      <feFuncA type="linear" slope="0.06"/>
+    </feComponentTransfer>
+    <feBlend mode="overlay" in="SourceGraphic" in2="soft"/>
+  </filter>
+  <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="18" result="blur"/>
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+  <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="36"/>
+  </filter>
+
+    
+      <linearGradient id="neonSun" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#f472b6"/>
+        <stop offset="55%" stop-color="#ec4899"/>
+        <stop offset="100%" stop-color="#3b0764" stop-opacity="0.1"/>
+      </linearGradient>
+      <linearGradient id="wetStreet" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#0b081a" stop-opacity="0.9"/>
+        <stop offset="40%" stop-color="#1e1136" stop-opacity="0.95"/>
+        <stop offset="100%" stop-color="#05040d"/>
+      </linearGradient>
+    
+  </defs>
+  <g filter="url(#grain)">
+    <rect width="600" height="900" fill="url(#bg)"/>
+    
+      <circle cx="300" cy="310" r="175" fill="#ec4899" opacity="0.18" filter="url(#softGlow)"/>
+      <circle cx="340" cy="480" r="150" fill="#06b6d4" opacity="0.15" filter="url(#softGlow)"/>
+      <circle cx="300" cy="290" r="95" fill="url(#neonSun)" opacity="0.9"/>
+      <g fill="#090716">
+        <rect x="35" y="420" width="70" height="480"/>
+        <rect x="115" y="340" width="85" height="560"/>
+        <rect x="215" y="290" width="90" height="610"/>
+        <rect x="320" y="360" width="75" height="540"/>
+        <rect x="410" y="310" width="95" height="590"/>
+        <rect x="515" y="400" width="65" height="500"/>
+      </g>
+      <g stroke="#22d3ee" stroke-width="2" opacity="0.85">
+        <line x1="130" y1="365" x2="185" y2="365"/>
+        <line x1="130" y1="382" x2="170" y2="382"/>
+        <line x1="428" y1="340" x2="488" y2="340"/>
+        <line x1="428" y1="358" x2="472" y2="358"/>
+      </g>
+      <g stroke="#f43f5e" stroke-width="2.5" opacity="0.9" filter="url(#glow)">
+        <line x1="232" y1="330" x2="232" y2="540"/>
+        <line x1="285" y1="360" x2="285" y2="580"/>
+        <line x1="356" y1="390" x2="356" y2="570"/>
+      </g>
+      <rect x="0" y="655" width="600" height="245" fill="url(#wetStreet)"/>
+      <g opacity="0.32" stroke="#67e8f9" stroke-width="1.2">
+        <line x1="90" y1="80" x2="40" y2="360"/>
+        <line x1="210" y1="40" x2="150" y2="400"/>
+        <line x1="390" y1="60" x2="330" y2="410"/>
+        <line x1="520" y1="90" x2="465" y2="430"/>
+      </g>
+      <ellipse cx="300" cy="760" rx="180" ry="18" fill="#ec4899" opacity="0.3" filter="url(#glow)"/>
+    
+    <rect width="600" height="900" fill="url(#vignette)"/>
+  </g>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020914"/>
+      <stop offset="52%" stop-color="#051d33"/>
+      <stop offset="100%" stop-color="#010710"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="45%" r="68%">
+      <stop offset="55%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.62"/>
+    </radialGradient>
+    
+  <filter id="grain" x="0%" y="0%" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
+    <feColorMatrix type="saturate" values="0" in="noise" result="mono"/>
+    <feComponentTransfer in="mono" result="soft">
+      <feFuncA type="linear" slope="0.06"/>
+    </feComponentTransfer>
+    <feBlend mode="overlay" in="SourceGraphic" in2="soft"/>
+  </filter>
+  <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="18" result="blur"/>
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+  <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="36"/>
+  </filter>
+
+    
+      <linearGradient id="subBeam" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#67e8f9" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+      </linearGradient>
+    
+  </defs>
+  <g filter="url(#grain)">
+    <rect width="600" height="900" fill="url(#bg)"/>
+    
+      <circle cx="300" cy="460" r="230" fill="#06b6d4" opacity="0.14" filter="url(#softGlow)"/>
+      <g fill="none" stroke="#22d3ee" opacity="0.65">
+        <circle cx="300" cy="470" r="55" stroke-width="2.5"/>
+        <circle cx="300" cy="470" r="110" stroke-width="2" opacity="0.65"/>
+        <circle cx="300" cy="470" r="170" stroke-width="1.5" opacity="0.4"/>
+        <circle cx="300" cy="470" r="235" stroke-width="1" opacity="0.22"/>
+      </g>
+      <polygon points="300,295 190,580 410,580" fill="url(#subBeam)" opacity="0.45"/>
+      <ellipse cx="300" cy="275" rx="44" ry="20" fill="#0f2940" stroke="#67e8f9" stroke-width="1.5"/>
+      <circle cx="300" cy="275" r="7" fill="#67e8f9" filter="url(#glow)"/>
+      <path d="M0 645 L170 570 L285 690 L430 585 L600 660 L600 900 L0 900 Z" fill="#020812"/>
+    
+    <rect width="600" height="900" fill="url(#vignette)"/>
+  </g>
+</svg>

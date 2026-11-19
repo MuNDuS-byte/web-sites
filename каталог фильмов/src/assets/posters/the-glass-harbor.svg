@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#041118"/>
+      <stop offset="52%" stop-color="#0c2734"/>
+      <stop offset="100%" stop-color="#08151e"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="45%" r="68%">
+      <stop offset="55%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.62"/>
+    </radialGradient>
+    
+  <filter id="grain" x="0%" y="0%" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
+    <feColorMatrix type="saturate" values="0" in="noise" result="mono"/>
+    <feComponentTransfer in="mono" result="soft">
+      <feFuncA type="linear" slope="0.06"/>
+    </feComponentTransfer>
+    <feBlend mode="overlay" in="SourceGraphic" in2="soft"/>
+  </filter>
+  <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="18" result="blur"/>
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+  <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="36"/>
+  </filter>
+
+    
+      <linearGradient id="beam" x1="0%" y1="50%" x2="100%" y2="50%">
+        <stop offset="0%" stop-color="#fef9c3" stop-opacity="0.85"/>
+        <stop offset="100%" stop-color="#5eead4" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="beamLeft" x1="100%" y1="50%" x2="0%" y2="50%">
+        <stop offset="0%" stop-color="#fef9c3" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#5eead4" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="seaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#0b2836"/>
+        <stop offset="100%" stop-color="#02090f"/>
+      </linearGradient>
+    
+  </defs>
+  <g filter="url(#grain)">
+    <rect width="600" height="900" fill="url(#bg)"/>
+    
+      <ellipse cx="300" cy="360" rx="280" ry="110" fill="#2dd4bf" opacity="0.1" filter="url(#softGlow)"/>
+      <polygon points="300,260 600,130 600,360" fill="url(#beam)" opacity="0.55"/>
+      <polygon points="300,260 0,190 0,340" fill="url(#beamLeft)" opacity="0.3"/>
+      <path d="M286 270 L314 270 L328 560 L272 560 Z" fill="#081a24"/>
+      <rect x="284" y="248" width="32" height="24" rx="3" fill="#0d2a38"/>
+      <circle cx="300" cy="260" r="10" fill="#fef08a" filter="url(#glow)"/>
+      <path d="M0 545 Q150 520 300 550 T600 540 L600 900 L0 900 Z" fill="#05141c"/>
+      <path d="M60 630 L215 630 L190 662 L85 662 Z" fill="#02090d"/>
+      <rect x="115" y="606" width="42" height="24" fill="#041017"/>
+      <path d="M0 662 Q300 645 600 668 L600 900 L0 900 Z" fill="url(#seaGrad)"/>
+      <line x1="180" y1="710" x2="430" y2="710" stroke="#5eead4" stroke-width="1.5" opacity="0.35"/>
+      <line x1="220" y1="745" x2="390" y2="745" stroke="#5eead4" stroke-width="1.2" opacity="0.22"/>
+    
+    <rect width="600" height="900" fill="url(#vignette)"/>
+  </g>
+</svg>
